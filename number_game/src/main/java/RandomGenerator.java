@@ -1,5 +1,3 @@
-package org.reitumetse;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -11,7 +9,7 @@ public class RandomGenerator {
 
     public static void main(String[] args) {
 
-        int guessMax = 3;
+        int guessMax = 5;
         int roundsMax = 10;
         boolean correctGuess = false;
         int rounds = 0; // Current round number
