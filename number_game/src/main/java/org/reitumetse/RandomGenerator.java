@@ -1,5 +1,7 @@
 package org.reitumetse;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,6 +15,8 @@ public class RandomGenerator {
         int roundsMax = 10;
         boolean correctGuess = false;
         int rounds = 1;
+        int winTrack = 0;
+        List<Integer> trueCounts = new ArrayList<>();
 
         String userRounds = getInput("How many rounds do you want to play: ");
 
@@ -21,7 +25,7 @@ public class RandomGenerator {
             Random randomNumber = new Random();
             int correctNumber = 1 + randomNumber.nextInt(100);
             int requestedRounds = Integer.parseInt(userRounds);
-
+            System.out.println(correctNumber);
             roundsMax = requestedRounds;
 
             for (int guess = 1; guess<= guessMax; guess++){
@@ -33,6 +37,10 @@ public class RandomGenerator {
                     if (userGuess == correctNumber){
                         System.out.println("Your guess is correct!");
                         correctGuess = true;
+                        if (correctGuess){
+                            winTrack++;
+                            trueCounts.add(winTrack);
+                        }
                         break;
                     } else if (userGuess > (correctNumber + 10)){
                         System.out.println("Your guess is too high from the correct guess.");
@@ -50,6 +58,7 @@ public class RandomGenerator {
             }
             rounds ++;
         }
+        System.out.println("Rounds won: " + trueCounts.size());
     }
 
 
