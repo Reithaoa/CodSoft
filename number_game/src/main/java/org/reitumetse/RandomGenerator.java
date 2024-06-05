@@ -17,6 +17,7 @@ public class RandomGenerator {
         System.out.println(correctNumber);
         int guessMax = 12;
         boolean correctGuess = false;
+        boolean shouldContinue = true;
 
         for (int guess = 1; guess<= guessMax; guess++){
             String userAttempt = getInput("Guess the correct number: ");
@@ -41,9 +42,9 @@ public class RandomGenerator {
         }
         if (!correctGuess){
             System.out.println("Sorry, you've reached your maximum guesses.\nThe correct guess was " + correctNumber + ".");
+            shouldContinue = false;
         }
     }
-//if ( )
     private static String getInput(String prompt){
         System.out.println(prompt);
         String input = scanner.nextLine();
