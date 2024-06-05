@@ -14,59 +14,75 @@ public class RandomGenerator {
         int guessMax = 3;
         int roundsMax = 10;
         boolean correctGuess = false;
-        int rounds = 1;
+        int rounds = 0; // Current round number
         int winTrack = 0;
         List<Integer> trueCounts = new ArrayList<>();
 
+        // Get the number of rounds from the user
         String userRounds = getInput("How many rounds do you want to play: ");
 
-        while (rounds <= roundsMax){
+        // Main loop to play the specified number of rounds
+        while (rounds <= roundsMax) {
 
             Random randomNumber = new Random();
-            int correctNumber = 1 + randomNumber.nextInt(100);
+            int correctNumber = 1 + randomNumber.nextInt(100); // Generate a random number between 1 and 100
             int requestedRounds = Integer.parseInt(userRounds);
-            System.out.println(correctNumber);
-            roundsMax = requestedRounds;
+            roundsMax = requestedRounds; // Update the maximum number of rounds based on user input
 
-            for (int guess = 1; guess<= guessMax; guess++){
+            // Inner loop for the user to make guesses
+            for (int guess = 1; guess <= guessMax; guess++) {
                 String userAttempt = getInput("Guess the correct number: ");
 
                 try {
                     int userGuess = Integer.parseInt(userAttempt);
 
-                    if (userGuess == correctNumber){
+                    // Check if the user's guess is correct
+                    if (userGuess == correctNumber) {
                         System.out.println("Your guess is correct!");
                         correctGuess = true;
-                        if (correctGuess){
+                        if (correctGuess) {
                             winTrack++;
                             trueCounts.add(winTrack);
                         }
                         break;
-                    } else if (userGuess > (correctNumber + 10)){
+                    } else if (userGuess > (correctNumber + 10)) {
                         System.out.println("Your guess is too high from the correct guess.");
-                    } else if (userGuess < (correctNumber - 10)){
+                    } else if (userGuess < (correctNumber - 10)) {
                         System.out.println("Your guess is too low from the correct guess.");
                     } else {
                         System.out.println("Your guess is incorrect");
                     }
-                }catch (NumberFormatException e){
+                } catch (NumberFormatException e) {
                     System.out.println("Please enter an integer.");
                 }
             }
-            if (!correctGuess){
+
+            // Inform the user if the guess was not correct
+            if (!correctGuess) {
                 System.out.println("Sorry, you've reached your maximum guesses.\nThe correct guess was " + correctNumber + ".");
             }
-            rounds ++;
+
+            correctGuess = false; // Reset correctGuess for the next round
+            rounds++;
         }
+        // Print the total number of rounds won
         System.out.println("Rounds won: " + trueCounts.size());
     }
 
 
-    private static String getInput(String prompt){
+    /**
+     * Prompts the user for input and returns the entered string.
+     * Ensures the input is not blank.
+     *
+     * @param prompt The message to display to the user.
+     * @return The user's input as a string.
+     */
+    private static String getInput(String prompt) {
         System.out.println(prompt);
         String input = scanner.nextLine();
 
-        while (input.isBlank()){
+        // Loop until a non-blank input is provided
+        while (input.isBlank()) {
             System.out.println(prompt);
             input = scanner.nextLine();
         }
