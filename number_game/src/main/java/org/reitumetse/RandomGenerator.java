@@ -1,7 +1,5 @@
 package org.reitumetse;
 
-import com.sun.source.tree.WhileLoopTree;
-
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,40 +9,50 @@ public class RandomGenerator {
 
     public static void main(String[] args) {
 
-        Random randomNumber = new Random();
-        int correctNumber = 1 + randomNumber.nextInt(100);
-        // TODO: REMOVE AFTER TESTING
-        System.out.println(correctNumber);
-        int guessMax = 12;
+        int guessMax = 3;
+        int roundsMax = 10;
         boolean correctGuess = false;
-        boolean shouldContinue = true;
+        int rounds = 1;
 
-        for (int guess = 1; guess<= guessMax; guess++){
-            String userAttempt = getInput("Guess the correct number: ");
+        String userRounds = getInput("How many rounds do you want to play: ");
 
-            try {
-                int userGuess = Integer.parseInt(userAttempt);
+        while (rounds <= roundsMax){
 
-                if (userGuess == correctNumber){
-                    System.out.println("Your guess is correct!");
-                    correctGuess = true;
-                    break;
-                } else if (userGuess > (correctNumber + 10)){
-                    System.out.println("Your guess is too high from the correct guess.");
-                } else if (userGuess < (correctNumber - 10)){
-                    System.out.println("Your guess is too low from the correct guess.");
-                } else {
-                    System.out.println("Your guess is incorrect");
+            Random randomNumber = new Random();
+            int correctNumber = 1 + randomNumber.nextInt(100);
+            int requestedRounds = Integer.parseInt(userRounds);
+
+            roundsMax = requestedRounds;
+
+            for (int guess = 1; guess<= guessMax; guess++){
+                String userAttempt = getInput("Guess the correct number: ");
+
+                try {
+                    int userGuess = Integer.parseInt(userAttempt);
+
+                    if (userGuess == correctNumber){
+                        System.out.println("Your guess is correct!");
+                        correctGuess = true;
+                        break;
+                    } else if (userGuess > (correctNumber + 10)){
+                        System.out.println("Your guess is too high from the correct guess.");
+                    } else if (userGuess < (correctNumber - 10)){
+                        System.out.println("Your guess is too low from the correct guess.");
+                    } else {
+                        System.out.println("Your guess is incorrect");
+                    }
+                }catch (NumberFormatException e){
+                    System.out.println("Please enter an integer.");
                 }
-            }catch (NumberFormatException e){
-                System.out.println("Please enter an integer.");
             }
-        }
-        if (!correctGuess){
-            System.out.println("Sorry, you've reached your maximum guesses.\nThe correct guess was " + correctNumber + ".");
-            shouldContinue = false;
+            if (!correctGuess){
+                System.out.println("Sorry, you've reached your maximum guesses.\nThe correct guess was " + correctNumber + ".");
+            }
+            rounds ++;
         }
     }
+
+
     private static String getInput(String prompt){
         System.out.println(prompt);
         String input = scanner.nextLine();
