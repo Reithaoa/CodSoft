@@ -14,7 +14,6 @@ public class RandomGenerator {
         Random randomNumber = new Random();
         int correctNumber = 1 + randomNumber.nextInt(100);
         // TODO: REMOVE AFTER TESTING
-
         System.out.println(correctNumber);
         int guessMax = 12;
         boolean correctGuess = false;
@@ -29,8 +28,12 @@ public class RandomGenerator {
                     System.out.println("Your guess is correct!");
                     correctGuess = true;
                     break;
-                }else {
-                    System.out.println("Your guess is incorrect, please try again.");
+                } else if (userGuess > (correctNumber + 10)){
+                    System.out.println("Your guess is too high from the correct guess.");
+                } else if (userGuess < (correctNumber - 10)){
+                    System.out.println("Your guess is too low from the correct guess.");
+                } else {
+                    System.out.println("Your guess is incorrect");
                 }
             }catch (NumberFormatException e){
                 System.out.println("Please enter an integer.");
@@ -40,7 +43,7 @@ public class RandomGenerator {
             System.out.println("Sorry, you've reached your maximum guesses.\nThe correct guess was " + correctNumber + ".");
         }
     }
-
+//if ( )
     private static String getInput(String prompt){
         System.out.println(prompt);
         String input = scanner.nextLine();
