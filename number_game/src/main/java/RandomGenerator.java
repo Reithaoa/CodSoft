@@ -12,7 +12,7 @@ public class RandomGenerator {
         int guessMax = 5;
         int roundsMax = 10;
         boolean correctGuess = false;
-        int rounds = 0; // Current round number
+        int rounds = 1; // Current round number
         int winTrack = 0;
         List<Integer> trueCounts = new ArrayList<>();
 
@@ -26,6 +26,8 @@ public class RandomGenerator {
             int correctNumber = 1 + randomNumber.nextInt(100); // Generate a random number between 1 and 100
             int requestedRounds = Integer.parseInt(userRounds);
             roundsMax = requestedRounds; // Update the maximum number of rounds based on user input
+
+            System.out.println(correctNumber); // todo: remove after testing
 
             // Inner loop for the user to make guesses
             for (int guess = 1; guess <= guessMax; guess++) {
