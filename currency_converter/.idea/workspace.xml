@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9be3be87-9dda-45b1-a227-8102d2488f4a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/reitumetse/currencyConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../number_game/src/main/java/RandomGeneratorGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/reitumetse/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/reitumetse/currencyConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/reitumetse/currencyConverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../management_system/src/main/java/org/reitumetse/RandomGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../management_system/src/main/java/org/reitumetse/RandomGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../number_game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../number_game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../number_game/src/main/java/RandomGeneratorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../number_game/src/main/java/RandomGeneratorGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../number_game/src/test/java/RandomGeneratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../number_game/src/test/java/RandomGeneratorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,15 +38,35 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.currencyConverter.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "/home/reitumetse/SIDE_PROJECTS/CodSoft/currency_converter/src/main/java/org/reitumetse/Main.java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.currencyConverter.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/home/reitumetse/SIDE_PROJECTS/CodSoft/currency_converter/src/main/java/org/reitumetse/Main.java&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="currencyConverter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.reitumetse.currencyConverter" />
+      <module name="currency_converter" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.reitumetse.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.currencyConverter" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

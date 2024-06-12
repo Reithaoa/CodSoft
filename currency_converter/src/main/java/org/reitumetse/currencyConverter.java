@@ -18,10 +18,19 @@ public class currencyConverter {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Type the currency you want to convert from: ");
+        // todo: allow user to use the currency symbol instead, like 'R' or '$'
+        // todo : add currency switch case for symbol or actual currency name
+        // todo : if they add the actual currency and then  don't prompt for country selection
+        // todo : when thy use the '$' sign, ask then to select an intended country from the list of all the ones that use the same sign.
         String originalCurrency = scanner.nextLine();
+
         System.out.println("Type the currency you want to convert to: ");
+        // todo: allow user to use the currency symbol instead, like 'R' or '$'
         String convertedCurrency = scanner.nextLine();
+
+
         System.out.println("Type the amount: ");
+        // todo: check and make sure that it is a number, whether decimal or not.
         BigDecimal amount = scanner.nextBigDecimal();
 
         String urlString =  "https://open.er-api.com/v6/latest?base=" + originalCurrency.toUpperCase();
@@ -40,8 +49,6 @@ public class currencyConverter {
 
         BigDecimal result = rate.multiply(amount);
         System.out.println(result);
-
-
 
     }
 }
