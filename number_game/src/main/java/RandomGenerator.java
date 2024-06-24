@@ -27,7 +27,6 @@ public class RandomGenerator {
             int requestedRounds = Integer.parseInt(userRounds);
             roundsMax = requestedRounds; // Update the maximum number of rounds based on user input
 
-            System.out.println(correctNumber); // todo: remove after testing
 
             // Inner loop for the user to make guesses
             for (int guess = 1; guess <= guessMax; guess++) {
