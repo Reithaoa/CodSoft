@@ -54,6 +54,6 @@ public class RandomGeneratorTest {
         System.setIn(in);
 
         String userInput = RandomGenerator.getInput("How many rounds do you want to play: ");
-        assertEquals("5", userInput, "The input should be '5'");
+        assertEquals("5", userInput, "The input should be 5");
     }
 }
