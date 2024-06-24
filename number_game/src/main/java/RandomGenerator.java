@@ -6,27 +6,40 @@ import java.util.Scanner;
 public class RandomGenerator {
 
     private static Scanner scanner = new Scanner(System.in);
+    static int correctNumber;
 
     public static void main(String[] args) {
+        RandomGenerator game = new RandomGenerator();
+        game.playGame();
+    }
 
+    public void playGame() {
         int guessMax = 5;
-        int roundsMax = 10;
         boolean correctGuess = false;
         int rounds = 1; // Current round number
         int winTrack = 0;
         List<Integer> trueCounts = new ArrayList<>();
 
-        // Get the number of rounds from the user
-        String userRounds = getInput("How many rounds do you want to play: ");
+
+
+        int roundsMax = 0;
+
+        do {
+            // Get the number of rounds from the user
+            String userRounds = getInput("How many rounds do you want to play: ");
+
+            try {
+                roundsMax = Integer.parseInt(userRounds);
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter an integer.");
+            }
+        } while (true);
 
         // Main loop to play the specified number of rounds
         while (rounds <= roundsMax) {
-
-            Random randomNumber = new Random();
-            int correctNumber = 1 + randomNumber.nextInt(100); // Generate a random number between 1 and 100
-            int requestedRounds = Integer.parseInt(userRounds);
-            roundsMax = requestedRounds; // Update the maximum number of rounds based on user input
-
+            correctNumber = generateRandomNumber();
+            System.out.println(correctNumber);
 
             // Inner loop for the user to make guesses
             for (int guess = 1; guess <= guessMax; guess++) {
@@ -36,7 +49,7 @@ public class RandomGenerator {
                     int userGuess = Integer.parseInt(userAttempt);
 
                     // Check if the user's guess is correct
-                    if (userGuess == correctNumber) {
+                    if (checkGuess(userGuess)) {
                         System.out.println("Your guess is correct!");
                         correctGuess = true;
                         if (correctGuess) {
@@ -44,12 +57,6 @@ public class RandomGenerator {
                             trueCounts.add(winTrack);
                         }
                         break;
-                    } else if (userGuess > (correctNumber + 10)) {
-                        System.out.println("Your guess is too high from the correct guess.");
-                    } else if (userGuess < (correctNumber - 10)) {
-                        System.out.println("Your guess is too low from the correct guess.");
-                    } else {
-                        System.out.println("Your guess is incorrect");
                     }
                 } catch (NumberFormatException e) {
                     System.out.println("Please enter an integer.");
@@ -68,15 +75,7 @@ public class RandomGenerator {
         System.out.println("Rounds won: " + trueCounts.size());
     }
 
-
-    /**
-     * Prompts the user for input and returns the entered string.
-     * Ensures the input is not blank.
-     *
-     * @param prompt The message to display to the user.
-     * @return The user's input as a string.
-     */
-    private static String getInput(String prompt) {
+    public static String getInput(String prompt) {
         System.out.println(prompt);
         String input = scanner.nextLine();
 
@@ -86,5 +85,23 @@ public class RandomGenerator {
             input = scanner.nextLine();
         }
         return input;
+    }
+
+    public int generateRandomNumber() {
+        Random randomNumber = new Random();
+        return 1 + randomNumber.nextInt(100);
+    }
+
+    public boolean checkGuess(int userGuess) {
+        if (userGuess == correctNumber) {
+            return true;
+        } else if (userGuess > (correctNumber + 10)) {
+            System.out.println("Your guess is too high from the correct guess.");
+        } else if (userGuess < (correctNumber - 10)) {
+            System.out.println("Your guess is too low from the correct guess.");
+        } else {
+            System.out.println("Your guess is incorrect");
+        }
+        return false;
     }
 }

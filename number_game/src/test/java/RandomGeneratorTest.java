@@ -1,48 +1,59 @@
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.List;
-import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 public class RandomGeneratorTest {
 
-    private InputStream originalSystemIn;
-    private final StringBuilder output = new StringBuilder();
+    private RandomGenerator game;
 
-    @Before
+    @BeforeEach
     public void setUp() {
-        originalSystemIn = System.in;
-        System.setOut(new java.io.PrintStream(System.out) {
-            @Override
-            public void println(String x) {
-                output.append(x).append("\n");
-            }
-        });
-    }
-
-    @After
-    public void tearDown() {
-        System.setIn(originalSystemIn);
-        output.setLength(0);
+        game = new RandomGenerator();
     }
 
     @Test
-    public void testPlayGame() {
-//        String input = "2\n50\n50\n50\n75\n75\n75\n"; // 2 rounds, 3 guesses each
-//        simulateUserInput(input);
-//
-////        List<Integer> results = RandomGenerator.playGame(2, 3);
-//
-//        // Verify the results
-//        assertEquals(2, results.size());
-//        assertTrue(output.toString().contains("Rounds won: 2"));
-//    }
+    public void testGenerateRandomNumber() {
+        int number = game.generateRandomNumber();
+        assertTrue(number >= 1 && number <= 100, "Random number should be between 1 and 100");
+    }
 
-//    private void simulateUserInput(String input) {
-//        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
-//        System.setIn(inputStream);
+    @Test
+    public void testCheckGuessCorrect() {
+        game.correctNumber = 50;
+        assertTrue(game.checkGuess(50), "Guess should be correct");
+    }
+
+    @Test
+    public void testCheckGuessTooHigh() {
+        game.correctNumber = 50;
+        assertFalse(game.checkGuess(70), "Guess should be too high");
+    }
+
+    @Test
+    public void testCheckGuessTooLow() {
+        game.correctNumber = 50;
+        assertFalse(game.checkGuess(30), "Guess should be too low");
+    }
+
+    @Test
+    public void testCheckGuessIncorrect() {
+        game.correctNumber = 50;
+        assertFalse(game.checkGuess(55), "Guess should be incorrect");
+    }
+
+    @Test
+    public void testGetInput() {
+        String input = "5";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        String userInput = RandomGenerator.getInput("How many rounds do you want to play: ");
+        assertEquals("5", userInput, "The input should be '5'");
     }
 }
