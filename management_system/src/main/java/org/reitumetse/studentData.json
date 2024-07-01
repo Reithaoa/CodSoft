@@ -1,0 +1,13 @@
+[ {
+  "name" : "Khumo Mogothle",
+  "subjects" : [ "Life Sciences", "Mathematics" ],
+  "grades" : [ 98, 78 ],
+  "averageGrade" : 88.0,
+  "averageGradeSymbol" : "B: Good"
+}, {
+  "name" : "Siza Magwentshu",
+  "subjects" : [ "Business Studies", "Geography", "Economics" ],
+  "grades" : [ 67, 89, 99 ],
+  "averageGrade" : 85.0,
+  "averageGradeSymbol" : "B: Good"
+} ]

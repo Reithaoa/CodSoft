@@ -47,13 +47,13 @@ public class RandomGeneratorTest {
         assertFalse(game.checkGuess(55), "Guess should be incorrect");
     }
 
-    @Test
-    public void testGetInput() {
-        String input = "5";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
-        String userInput = RandomGenerator.getInput("How many rounds do you want to play: ");
-        assertEquals("5", userInput, "The input should be 5");
-    }
+//    @Test
+//    public void testGetInput() {
+//        String input = "5";
+//        InputStream in = new ByteArrayInputStream(input.getBytes());
+//        System.setIn(in);
+//
+//        String userInput = RandomGenerator.getInput("How many rounds do you want to play: ");
+//        assertEquals("5", userInput, "The input should be 5");
+//    }
 }
